@@ -10,13 +10,13 @@ def start_board(difficulty_number: int) -> list[list[int]]:
     here is how the argument integer relates to the 
     difficulty and how many numbers are removed:
 
-    0 -> easy (  )
+    0 -> easy ( 35 )
 
-    1 -> medium (  )
+    1 -> medium ( 45 )
     
-    2 -> hard (  )
+    2 -> hard ( 55 )
     
-    3 -> expert (  )
+    3 -> expert ( 65 )
     
     param: difficulty (int) -> the difficulty of the board to be generated
     returns: an integer matrix for the sudoku board 
@@ -27,13 +27,13 @@ def start_board(difficulty_number: int) -> list[list[int]]:
     
     match difficulty_number:
         case 0: # easy
-            number_to_remove = 32
+            number_to_remove = 35
         case 1: # medium
             number_to_remove = 45
         case 2: # mard
-            number_to_remove = 50
+            number_to_remove = 55
         case 3: # expert
-            number_to_remove = 56
+            number_to_remove = 65
 
 
     return remove_random_values( number_to_remove, board )
@@ -77,13 +77,13 @@ def generate_solved_board():
     board_is_valid = False
     while not board_is_valid:
         random.shuffle(board)
-        board_is_valid = verify_valid_board( board )
+        board_is_valid = validate_board( board )
 
     return board
 
 
 
-def verify_valid_board( board: list[list[int]] ) -> bool :
+def validate_board( board: list[list[int]] ) -> bool :
 
     all_rows_valid = verify_rows( board )
     all_columns_valid = verify_columns( board )
@@ -184,6 +184,3 @@ def verify_squares( board: list[list[int]] ) -> bool:
                     return False
     
     return True
-
-
-generate_solved_board()
