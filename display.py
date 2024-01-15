@@ -1,4 +1,3 @@
-from sudoku import * 
 
 def display( board: list[list[int]] ) -> None:
     for row in board:
@@ -12,11 +11,11 @@ def display( board: list[list[int]] ) -> None:
         print( formatted_row )
 
 
-print("easy:")
-display( start_board(0) )
-print("\nmedium:")
-display( start_board(1) )
-print("\nhard:")
-display( start_board(2) )
-print("\nexpert:")
-display( start_board(3) )
+# print("easy:")
+# display( start_board(0) )
+# print("\nmedium:")
+# display( start_board(1) )
+# print("\nhard:")
+# display( start_board(2) )
+# print("\nexpert:")
+# display( start_board(3) )
