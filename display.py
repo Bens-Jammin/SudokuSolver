@@ -1,5 +1,4 @@
 
-
 def display( board: list[list[int]] ) -> None:
     for row in board:
         formatted_row = ""
@@ -10,8 +9,6 @@ def display( board: list[list[int]] ) -> None:
 
             formatted_row += "["+str(col)+"]"
         print( formatted_row )
-
-
 
 
 # print("easy:")

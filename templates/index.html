@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
-</head>
-<body>
-    <div><h1>Home Page</h1></div>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Sudoku!{% endblock %}
+{% block content %}
+{% for i in x %}
+    <P>{{i}}</P>
+{% endfor %}
+{% endblock %}
