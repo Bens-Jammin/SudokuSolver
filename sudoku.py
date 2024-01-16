@@ -59,21 +59,20 @@ def remove_random_values( number_of_values_to_remove: int, board: list[list[int]
     return board
 
 
-base  = 3
-side  = base*base
+def generate_solved_board():
 
-# pattern for a baseline valid solution
-def pattern(r,c): return (base*(r%base)+r//base+c)%side
+    # pattern for a baseline valid solution
+    def hash(r,c): return (3*(r%3)+r//3+c)%9
 
-# randomize rows, columns and numbers (of valid base pattern)
-from random import sample
-def shuffle(s): return sample(s,len(s)) 
-rBase = range(base) 
-rows  = [ g*base + r for g in shuffle(rBase) for r in shuffle(rBase) ] 
-cols  = [ g*base + c for g in shuffle(rBase) for c in shuffle(rBase) ]
-nums  = shuffle(range(1,base*base+1))
+    # randomize rows, columns and numbers (of valid base pattern)
+    def shuffle(s): return random.sample(s,len(s)) 
 
-# produce board using randomized baseline pattern
-board = [ [nums[pattern(r,c)] for c in cols] for r in rows ]
+    rows  = [ g*3 + r for g in shuffle(range(3)) for r in shuffle(range(3)) ] 
+    cols  = [ g*3 + c for g in shuffle(range(3)) for c in shuffle(range(3)) ]
 
-for line in board: print(line)
+    nums  = shuffle(range(1,10))
+
+    # produce board using randomized baseline pattern
+    board = [ [nums[hash(r,c)] for c in cols] for r in rows ]
+
+    return board
