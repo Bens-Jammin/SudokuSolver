@@ -4,7 +4,7 @@ views = Blueprint(__name__,"views")
 
 @views.route("/")
 def home():
-    board = [ [nums[pattern(r,c)] for c in cols] for r in rows ]
+    board = start_board(3)
     return render_template("index.html",x=board)
 
 #     for line in board: return line

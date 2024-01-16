@@ -37,8 +37,7 @@ def start_board(difficulty_number: int) -> list[list[int]]:
 
 
     return remove_random_values( number_to_remove, board )
-    
-    
+
 
 
 def remove_random_values( number_of_values_to_remove: int, board: list[list[int]] ) -> list[list[int]]:
