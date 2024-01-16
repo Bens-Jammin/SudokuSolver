@@ -49,56 +49,31 @@ def remove_random_values( number_of_values_to_remove: int, board: list[list[int]
         row = random.randint( 0, 8 )
         col = random.randint( 0, 8 )
 
-        value_already_removed = ( board[row][col] == -1 ) 
+        value_already_removed = ( board[row][col] == 0 ) 
         if( value_already_removed ):
             continue
 
-        board[row][col] = -1
+        board[row][col] = 0
         total_removed_values += 1
     
     return board
 
 
+base  = 3
+side  = base*base
 
-def generate_solved_board():
-    board = [[0 for i in range(9)] for j in range(9)]
+# pattern for a baseline valid solution
+def pattern(r,c): return (base*(r%base)+r//base+c)%side
 
-    numbers = [1,2,3,4,5,6,7,8,9]
-    while True:
-            
-        for i in range(9):
-            random.shuffle( numbers )
-            board[i] = numbers
-            
+# randomize rows, columns and numbers (of valid base pattern)
+from random import sample
+def shuffle(s): return sample(s,len(s)) 
+rBase = range(base) 
+rows  = [ g*base + r for g in shuffle(rBase) for r in shuffle(rBase) ] 
+cols  = [ g*base + c for g in shuffle(rBase) for c in shuffle(rBase) ]
+nums  = shuffle(range(1,base*base+1))
 
+# produce board using randomized baseline pattern
+board = [ [nums[pattern(r,c)] for c in cols] for r in rows ]
 
-        if is_valid_board(board):
-            break
-    return board
-
-
-def is_valid_board(board):
-    for row in board:
-       if len(set(row)) != 9:
-           return False
-
-   # Check columns
-    for col in zip(*board):
-        if len(set(col)) != 9:
-            return False
-
-    # Check boxes
-    for i in range(0, 9, 3):
-        for j in range(0, 9, 3):
-            box = []
-            for x in range(3):
-                for y in range(3):
-                    box.append(board[i+x][j+y])
-            if len(set(box)) != 9:
-                return False
-
-    return True
-        
-
-
-generate_solved_board()
+for line in board: print(line)
