@@ -1,10 +1,14 @@
-from flask import Blueprint,render_template
+from flask import Blueprint,render_template,request
 from sudoku import *
 views = Blueprint(__name__,"views")
 
-@views.route("/")
+@views.route("/",methods=["POST","GET"])
 def home():
-    board = start_board(3)
-    return render_template("index.html",x=board)
+    if request.method == "POST":
+        userin = request.form["in"]
+        return "hi"
+    else:
+        board = start_board(3)
+        return render_template("index.html",x=board,y="  ")
 
 #     for line in board: return line

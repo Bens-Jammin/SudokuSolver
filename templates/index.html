@@ -2,6 +2,19 @@
 {% block title %}Sudoku!{% endblock %}
 {% block content %}
 {% for i in x %}
-    <P>{{i}}</P>
+<div>
+    <table>
+    <tr>
+    {% for j in i %}
+        {% if j == 0 %}
+            <td><button type="text" name="in" style="margin-top: 3.8px;height: 64px;width: 64px;" value="text">{{y}}</button></td>
+        {% endif %}
+        {% if j != 0 %}
+            <td><button type="text" form="form1"  style=" margin-top: 0px;height: 64px;width: 64px;" value="text">{{j}}</button></td>
+        {% endif %}
+    {% endfor %}
+    </tr>
+    </table>
+</div>
 {% endfor %}
 {% endblock %}
