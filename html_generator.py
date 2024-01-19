@@ -11,9 +11,9 @@ def generate_board_matrix( board: list[list[int]] ) -> str:
         table += "<tr>"
         for col in row:
             if col == 0:
-                table += "<td>"+text_box+"</td>"
+                table += "<td style='max-width: 50px; text-align: center; border: 1px solid black'>"+text_box+"</td>"
             else:
-                table += "<td>"+str(col)+"</td>"
+                table += "<td style='max-width: 50px'>"+str(col)+"</td>"
             
         table += "</tr>"
         
