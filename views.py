@@ -6,7 +6,6 @@ views = Blueprint(__name__,"views")
 @views.route("/",methods=["POST","GET"])
 def home():
     if request.method == "POST":
-        userin = request.form["in"]
         return "hi"
     else:
         board = start_board(3)
