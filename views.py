@@ -1,5 +1,6 @@
 from flask import Blueprint,render_template,request
 from sudoku import *
+import html_generator as html
 views = Blueprint(__name__,"views")
 
 @views.route("/",methods=["POST","GET"])
@@ -9,6 +10,7 @@ def home():
         return "hi"
     else:
         board = start_board(3)
-        return render_template("index.html",x=board,y="  ")
+        board = html.generate_board_matrix(board)
+        return render_template("index.html",sudoku_board = board)
 
 #     for line in board: return line

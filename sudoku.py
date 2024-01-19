@@ -1,5 +1,4 @@
 import random
-import display
 
 def start_board(difficulty_number: int) -> list[list[int]]:
     """
